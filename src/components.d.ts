@@ -9,13 +9,9 @@ declare module 'vue' {
   export interface GlobalComponents {
     AppFooter: typeof import('./components/AppFooter.vue')['default']
     AppHeader: typeof import('./components/AppHeader.vue')['default']
-    HelloWorld: typeof import('./components/HelloWorld.vue')['default']
     LanguageList: typeof import('./components/LanguageList.vue')['default']
-    LeafletMap: typeof import('./components/LeafletMap.vue')['default']
-    Map_test: typeof import('./components/map_test.vue')['default']
     MarkerAddButton: typeof import('./components/map/MarkerAddButton.vue')['default']
     MarkersList: typeof import('./components/markerList/MarkersList.vue')['default']
-    NewMap: typeof import('./components/map/OpenLayersMap.vue')['default']
     OpenLayersMap: typeof import('./components/map/OpenLayersMap.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

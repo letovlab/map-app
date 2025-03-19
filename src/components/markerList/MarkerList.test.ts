@@ -24,23 +24,19 @@ describe('MarkersList.vue', () => {
     setActivePinia(createPinia());
     mapStore = useMapStore();
 
-    // Mock location and URL
     vi.stubGlobal('location', {
       href: 'http://localhost:3000/',
       pathname: '/'
     });
 
-    // Mock clipboard API
     vi.stubGlobal('navigator', {
       clipboard: {
         writeText: vi.fn().mockResolvedValue(undefined)
       }
     });
 
-    // Mock confirm dialog
     vi.stubGlobal('confirm', vi.fn(() => true));
 
-    // Mock alert
     vi.stubGlobal('alert', vi.fn());
   });
 
@@ -66,11 +62,9 @@ describe('MarkersList.vue', () => {
 
     const listItems = wrapper.findAll('v-list-item');
 
-    // Check first marker
     expect(listItems[0].attributes('title')).toBe('Marker 1');
     expect(listItems[0].attributes('subtitle')).toBe('40.7128, -74.0060');
 
-    // Check unnamed marker
     expect(listItems[2].attributes('title')).toBe('Unnamed Marker');
   });
 
@@ -102,7 +96,8 @@ describe('MarkersList.vue', () => {
 
     wrapper = mount(MarkersList);
 
-    // Directly call the removeMarker method
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     await wrapper.vm.removeMarker(1);
 
     expect(window.confirm).toHaveBeenCalledWith('Are you sure you want to remove this marker?');
@@ -115,6 +110,8 @@ describe('MarkersList.vue', () => {
     vi.spyOn(mapStore, 'removeMarker');
 
     wrapper = mount(MarkersList);
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     await wrapper.vm.removeMarker(1);
 
     expect(mapStore.removeMarker).not.toHaveBeenCalled();
@@ -124,15 +121,14 @@ describe('MarkersList.vue', () => {
     mapStore.markers = sampleMarkers;
     wrapper = mount(MarkersList);
 
-    // Create a mock event with stopPropagation
     const mockEvent = {
       stopPropagation: vi.fn()
     };
 
-    // Mock clipboard writeText
     vi.mocked(navigator.clipboard.writeText).mockResolvedValueOnce(undefined);
 
-    // Call the method directly with the mock event
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-expect-error
     await wrapper.vm.copyMarkerUrl(1, mockEvent as unknown as MouseEvent);
 
     expect(mockEvent.stopPropagation).toHaveBeenCalled();

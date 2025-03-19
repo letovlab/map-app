@@ -9,6 +9,8 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src')
     }
   },
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   test: {
     globals: true,
     environment: 'jsdom',
