@@ -4,16 +4,21 @@
     Content-Type = "application/javascript"
 
 [[headers]]
-  for = "/*.mjs"
-  [headers.values]
-    Content-Type = "application/javascript"
+    for = "/*.mjs"
+    [headers.values]
+        Content-Type = "application/javascript"
 
 [[headers]]
-  for = "/assets/*.js"
-  [headers.values]
-    Content-Type = "application/javascript"
+    for = "/assets/*.js"
+    [headers.values]
+        Content-Type = "application/javascript"
 
 [build]
-  command = "npm run build"
-  functions = "netlify/functions"
-  publish = "dist"
+    command = "npm run build"
+    functions = "netlify/functions"
+    publish = "dist"
+
+[[redirects]]
+    from = "/*"
+    to = "/index.html"
+    status = 200
