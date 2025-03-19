@@ -7,3 +7,8 @@
   for = "/*.mjs"
   [headers.values]
     Content-Type = "application/javascript"
+
+[[headers]]
+  for = "/assets/*.js"
+  [headers.values]
+    Content-Type = "application/javascript"
