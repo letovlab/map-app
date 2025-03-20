@@ -45,7 +45,11 @@ npm run build
 
 ## Backend Service
 
-The application uses a pseudo-asynchronous backend service that emulates server behavior while storing data in the browser's localStorage. This approach demonstrates the implementation of service architecture while keeping the application self-contained.
+The application uses a pseudo-asynchronous backend
+service that emulates server behavior while storing data
+in the browser's localStorage.
+This approach demonstrates the implementation of service
+architecture while keeping the application self-contained.
 
 ```javascript
 // Example backend service usage
